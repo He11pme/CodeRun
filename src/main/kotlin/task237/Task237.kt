@@ -5,7 +5,7 @@ import kotlin.system.measureTimeMillis
 val employees = mutableMapOf<Int, Employee>()
 
 fun main() {
-    startWithTime(readInput())
+    start(readInput())
 }
 
 private fun startWithTime(input: String) {
