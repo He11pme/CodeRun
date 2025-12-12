@@ -23,9 +23,9 @@ fun start(input: Input) {
 private fun readInput(): Input {
     val (s, n) = readln().split(" ").map { it.toInt() }
     return Input(s, n).apply {
-        (1..this.n).forEach {
-            coordinates += readln().toInt()
-        }
+        // Была ошибка, не прочитал правильно условие задачи
+        // Координаты домов приходили не каждая в своей строке, а все в одной
+        coordinates.addAll(readln().split(" ").map { it.toInt() })
     }
 }
 
