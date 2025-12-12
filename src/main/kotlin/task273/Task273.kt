@@ -17,16 +17,12 @@ fun start(input: Input) {
     println(answer)
 }
 
-// Если разбирать значения прямо во время ввода,
-// то можно ускорить решение задачи.
-// Но для тестов мне удобнее так
 private fun readInput(): Input {
-    val (s, n) = readln().split(" ").map { it.toInt() }
-    return Input(s, n).apply {
-        // Была ошибка, не прочитал правильно условие задачи
-        // Координаты домов приходили не каждая в своей строке, а все в одной
-        coordinates.addAll(readln().split(" ").map { it.toInt() })
-    }
+    // Из первой строки мне нужна только координата офиса
+    val s = readln().split(" ")[0]
+    val coordinates = readln()
+
+    return Input(s, coordinates)
 }
 
 private fun solution(input: Input): Int {
@@ -36,28 +32,29 @@ private fun solution(input: Input): Int {
     // Расстояние до самого дальнего дома справа
     var right = 0
 
-    input.coordinates.forEach { house ->
-        val distance: Int
-        when {
-            house < input.s -> {
-                distance = input.s - house
-                if (left < distance) left = distance
-            }
-            house > input.s -> {
-                distance = house - input.s
-                if (right < distance) right = distance
+    input.apply {
+        val office = s.toInt()
+        coordinates.split(" ").forEach {
+            val house = it.toInt()
+            val distance: Int
+            when {
+                house < office -> {
+                    distance = office - house
+                    if (left < distance) left = distance
+                }
+                house > office -> {
+                    distance = house - office
+                    if (right < distance) right = distance
+                }
             }
         }
     }
 
-    val minDistance = min(left, right) * 2 + max(left, right)
-    return minDistance
+    return min(left, right) * 2 + max(left, right)
 }
 
 private fun getAnswer(answer: Int): String {
     return answer.toString()
 }
 
-data class Input(val s: Int, val n: Int) {
-    val coordinates = mutableListOf<Int>()
-}
+data class Input(val s: String, val coordinates: String)
