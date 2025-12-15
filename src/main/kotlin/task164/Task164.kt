@@ -22,14 +22,14 @@ private fun readInput(): Input {
 private fun solution(input: Input): Int {
     var indexMagicSubstring = -1
 
-    val list = input.s.toList()
-    val subList = input.t.toList()
+    val s = input.s
+    val t = input.t
 
-    val lengthSubStr = subList.size
+    val lengthMagicString = t.length
 
-    if (lengthSubStr == 0 || list.isEmpty() || lengthSubStr > list.size) return indexMagicSubstring
+    if (lengthMagicString == 0 || s.isEmpty() || lengthMagicString > s.length) return indexMagicSubstring
 
-    val countRepeat = input.s.length - lengthSubStr + 1
+    val countRepeat = input.s.length - lengthMagicString + 1
 
     var countContinue = 0
     for (index in (0 until countRepeat)) {
@@ -39,11 +39,10 @@ private fun solution(input: Input): Int {
             continue
         }
 
-        val str = list.slice(index until index + lengthSubStr).toMutableList()
-        subList.forEach {
+        val str = s.slice(index until index + lengthMagicString).toMutableList()
+        t.forEach {
             str.remove(it)
         }
-        println()
 
         if (str.size == 1) {
             indexMagicSubstring = index

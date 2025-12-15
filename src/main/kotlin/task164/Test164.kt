@@ -35,7 +35,7 @@ private val tests = listOf(
         "My Test 4",
         Input("abcd", "afdss"),
         "-1"),
-//    createLongTest()
+    createLongTest()
 )
 
 fun main() {
@@ -49,6 +49,7 @@ private fun startWithTime(test: Test) {
     val time = measureTimeMillis { start(test.input) }
     println("answer is ${if (answer == test.answer) "correct" else "incorrect"}!")
     println("${test.title}: lead time = $time ms")
+    println()
 }
 
 private fun createLongTest(): Test {
