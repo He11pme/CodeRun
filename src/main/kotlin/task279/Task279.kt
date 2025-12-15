@@ -30,11 +30,16 @@ private fun solution(input: Input): String {
     input.apply {
         if (numberAthletes.size > rooms.sumOf { it.number }) return "No"
         val sortAthletes = numberAthletes.sortedDescending()
+        val sortRooms = rooms.sortedByDescending { it.capacity }.toMutableList()
+
         sortAthletes.forEach { team ->
-            val suitableRoom = rooms.filter {
-                it.capacity >= team && it.number != 0
-            }.minByOrNull { it.capacity } ?: return "No"
-            suitableRoom.number -= 1
+            sortRooms.firstOrNull()?.let { biggestRoom ->
+                if (biggestRoom.capacity >= team) {
+                    if (biggestRoom.number > 1) biggestRoom.number -= 1
+                    else sortRooms.removeFirst()
+                } else return "No"
+            } ?: return "No"
+
         }
     }
     return "Yes"
