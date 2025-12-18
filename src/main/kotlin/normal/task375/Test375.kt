@@ -1,4 +1,4 @@
-package task375
+package normal.task375
 
 import kotlin.math.pow
 import kotlin.system.measureTimeMillis

@@ -1,4 +1,4 @@
-package task375
+package normal.task375
 
 var answer: String = ""
     private set

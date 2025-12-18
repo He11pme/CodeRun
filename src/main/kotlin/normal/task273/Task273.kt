@@ -1,4 +1,4 @@
-package task273
+package normal.task273
 
 import kotlin.apply
 import kotlin.math.max

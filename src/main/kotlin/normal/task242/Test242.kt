@@ -1,4 +1,4 @@
-package task242
+package normal.task242
 
 import kotlin.system.measureTimeMillis
 
