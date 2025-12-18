@@ -34,7 +34,7 @@ private fun solution(input: Input): Int {
 
     var lastSize = 0
 
-    (associate.keys.sortedDescending()).forEach { k ->
+    (associate.keys.max() downTo 1).forEach { k ->
         lastSize += associate.getOrDefault(k, 0)
         if (k <= lastSize) return k
     }

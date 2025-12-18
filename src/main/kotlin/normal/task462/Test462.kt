@@ -14,6 +14,10 @@ private val tests = listOf(
         "Test 2",
         Input("3","0 0 0"),
         "0"),
+    Test(
+        "Test 3",
+        Input("4","25 50 100 75"),
+        "4"),
 
     // My test
     Test(
@@ -23,7 +27,7 @@ private val tests = listOf(
     Test(
         "My test 2",
         Input("8","1 0 4 5 25 28 36 27"),
-        "2"
+        "4"
     ),
     createLongTest()
 )
