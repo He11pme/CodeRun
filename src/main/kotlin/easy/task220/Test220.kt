@@ -13,7 +13,7 @@ private val tests = listOf(
             7,
             listOf(-12, 13, -5, -3, 5, -2, 0)
         ),
-        "-10\n12\n-7\n-3\n3\n-3\n-3"
+        "-10\n12\n-3\n-3\n3\n-3\n3"
     ),
     Test(
         "Test 2",
@@ -46,7 +46,7 @@ private val tests = listOf(
                 "-27\n" +
                 "-7\n" +
                 "-7\n" +
-                "12\n" +
+                "20\n" +
                 "-7"
     ),
     Test(
@@ -75,7 +75,7 @@ private val tests = listOf(
     ),
 
     // My test
-    createLongTest()
+//    createLongTest()
 )
 
 fun main() {

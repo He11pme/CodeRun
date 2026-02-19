@@ -1,6 +1,7 @@
 package easy.task220
 
 import kotlin.math.abs
+import kotlin.math.roundToInt
 
 var answer: String = ""
     private set
@@ -28,18 +29,31 @@ private fun solution(input: Input): String {
     val ans = StringBuilder()
 
     val a = input.a.sorted()
+
+
     input.j.forEachIndexed { index, j ->
         var minDiff = Int.MAX_VALUE
         var lastNumber = j
-        for (i in 0 until a.size) {
-            val ai = a[i]
-            val diff = abs(ai - j)
+
+        var left = 0
+        var right = a.lastIndex
+//        println("search number: $j")
+        while (left <= right) {
+//            println(a.take(right + 1).drop(left))
+            val mid = ((left + right) / 2.0).roundToInt()
+            val aMid = a.getOrNull(mid - 1) ?: a[mid]
+//            println("mid = $aMid; index = $mid")
+            val diff = abs(aMid - j)
+
             if (diff < minDiff) {
                 minDiff = diff
-                lastNumber = ai
+                lastNumber = aMid
             }
-            else break
+
+            if (j > aMid) left = mid + 1
+            else right = mid - 1
         }
+//        println("\n")
         ans.append("$lastNumber")
         if (index != input.j.lastIndex) ans.append("\n")
     }
