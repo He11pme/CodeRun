@@ -41,7 +41,7 @@ private fun solution(input: Input): String {
         while (left <= right) {
 //            println(a.take(right + 1).drop(left))
             val mid = ((left + right) / 2.0).roundToInt()
-            val aMid = a.getOrNull(mid - 1) ?: a[mid]
+            val aMid = a[mid]
 //            println("mid = $aMid; index = $mid")
             val diff = abs(aMid - j)
 
